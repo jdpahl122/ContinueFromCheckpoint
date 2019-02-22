@@ -12,11 +12,12 @@ FactoryBot.define do
     trait :release_dates do
       release_dates do
         {
-          "#{rand(1..Platform.count)}": Faker::Date.between(20.years.ago, 1.year.from_now)
+          "1": Faker::Date.between(20.years.ago, 1.year.from_now)
         }
       end
     end
 
     factory :game_with_cover, traits: [:with_cover]
     factory :game_with_release_dates, traits: [:release_dates]
+  end
 end
