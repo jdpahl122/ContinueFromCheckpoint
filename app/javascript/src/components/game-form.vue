@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="box">
+      <p v-for="(item, k) in game" :key="k">
+        <strong>{{ k }}:</strong> {{ item }}
+      </p>
+    </div>
+    
     <!-- Display errors if there are any. -->
     <div class="notification errors-notification is-danger" v-if="errors.length > 0">
       <p>{{ errors.length > 1 ? 'Errors' : 'An error'}} prevented this game from being saved:</p>
@@ -61,6 +67,12 @@
       :search-path-identifier="'platforms'"
     ></multi-select>
 
+    <release-dates-select
+      :label="formData.releaseDates.label"
+      v-model="game.releaseDates"
+      :platforms="game.platforms"
+    ></release-dates-select>
+
     <button
       class="button is-primary"
       value="Submit"
@@ -79,6 +91,7 @@ import TextArea from './text-area.vue';
 import TextField from './text-field.vue';
 import MultiSelect from './multi-select.vue';
 import FileSelect from './file-select.vue';
+import ReleaseDatesSelect from './release-dates-select.vue';
 import Rails from 'rails-ujs';
 import { DirectUpload } from 'activestorage';
 
@@ -88,7 +101,8 @@ export default {
     TextArea,
     TextField,
     MultiSelect,
-    FileSelect
+    FileSelect,
+    ReleaseDatesSelect
   },
   props: {
     name: {
@@ -136,6 +150,13 @@ export default {
         return []
       }
     },
+    releaseDates: {
+      type: Array,
+      required: false,
+      default: function() {
+        return []
+      }
+    },
     submitPath: {
       type: String,
       required: true
@@ -168,6 +189,7 @@ export default {
         developers: this.developers,
         publishers: this.publishers,
         platforms: this.platforms,
+        releaseDates: this.releaseDates,
         cover: this.cover,
         coverBlob: this.coverBlob
       },
@@ -198,6 +220,9 @@ export default {
         },
         platforms: {
           label: 'Platforms'
+        },
+        releaseDates: {
+          label: 'Release Dates'
         }
       }
     }
