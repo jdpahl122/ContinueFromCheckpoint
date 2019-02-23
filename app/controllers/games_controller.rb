@@ -149,7 +149,7 @@ class GamesController < ApplicationController
       developer_ids: [],
       publisher_ids: [],
       platform_ids: [],
-      release_dates: [:platform_id, :release_date],
+      release_dates: [:platform_id, :release_date]
     )
   end
 

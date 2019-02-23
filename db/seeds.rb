@@ -136,7 +136,7 @@ puts "Creating Games..."
       game: game,
       platform: platform
     )
-    
+
     release_date_hash = {}
     release_date_hash['platform_id'] = platform.id
     release_date_hash['release_date'] = Faker::Date.between(10.years.ago, 1.year.from_now)
