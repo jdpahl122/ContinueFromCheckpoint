@@ -151,10 +151,10 @@ export default {
       }
     },
     releaseDates: {
-      type: Array,
+      type: Object,
       required: false,
       default: function() {
-        return []
+        return { }
       }
     },
     submitPath: {
