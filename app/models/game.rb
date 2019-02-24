@@ -24,7 +24,7 @@ class Game < ApplicationRecord
 
   has_one_attached :cover
 
-  validate :release_dates_platforms_should_match_platforms, on: [:create, :update]
+  validate :release_dates_platforms_should_match_platforms
 
   validates :name,
     presence: true,

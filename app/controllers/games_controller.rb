@@ -21,6 +21,11 @@ class GamesController < ApplicationController
     @developers = GameDeveloper.all
                                .where(game: @game.id)
                                .includes(:company)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @game }
+    end
   end
 
   def new
