@@ -37,6 +37,7 @@ Rails.application.config.content_security_policy_nonce_generator = -> (_request)
 module ActionDispatch
   class ContentSecurityPolicy
     private
+
     def nonce_directive?(directive)
       %w[script-src].include?(directive)
     end
